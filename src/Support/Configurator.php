@@ -46,7 +46,10 @@ class Configurator
      */
     static public function merge($directory, $hint)
     {
-
+        // @todo @ryanthompson quick-fix for tests
+        if(!file_exists($directory)){
+            return;
+        }
         /* @var SplFileInfo $file */
         foreach ((new RecursiveDirectoryIterator($directory, FilesystemIterator::SKIP_DOTS)) as $file) {
 

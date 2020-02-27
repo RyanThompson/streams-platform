@@ -169,8 +169,7 @@ class StreamsServiceProvider extends ServiceProvider
         /**
          * Load core routes.
          */
-        Route::middleware('web')
-            ->group(base_path('vendor/anomaly/streams-platform/resources/routes/web.php'));
+        Route::middleware('web')->group(__DIR__ . '/../resources/routes/web.php');
     }
 
     /**
@@ -340,7 +339,7 @@ class StreamsServiceProvider extends ServiceProvider
 
     /**
      * Add view namespaces.
-     * 
+     *
      * @deprecated  2.0 - Remove
      */
     public function addViewNamespaces()
@@ -350,7 +349,7 @@ class StreamsServiceProvider extends ServiceProvider
         /**
          * We still need the composer
          * for $view->make() overloading.
-         * 
+         *
          * @todo Remove this. Publishing should be used.
          */
         //$views->composer('*', ViewComposer::class);
@@ -374,6 +373,8 @@ class StreamsServiceProvider extends ServiceProvider
         $image = img();
         $trans = trans();
         $assets = assets();
+
+$addons=        resolve(AddonCollection::class);
 
         if ($default = config('streams::themes.default')) {
 
